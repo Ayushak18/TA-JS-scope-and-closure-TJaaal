@@ -15,6 +15,8 @@ let hundred = square(10);
 console.log(hundred);
 ```
 
+![](../img/one.jpeg)
+
 Create the execution context diagram of the following code line by line.
 
 ```js
@@ -26,6 +28,9 @@ var five = addFive(0);
 var ten = addFive(5);
 console.log(five, ten);
 ```
+
+![](../img/two.jpeg)
+
 
 Create the execution context diagram of the following code line by line.
 
@@ -48,7 +53,7 @@ Create the execution context diagram of the following code line by line.
 counter();
 function counter(){
   let count = 0;
-  funciton increment(){
+  function increment(){
     return count++;
   }
   return increment()
