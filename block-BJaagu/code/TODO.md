@@ -102,7 +102,7 @@ let sayHello = () => {
   console.log(username);
   var username = "John";
 };
-sayHello(); // OUTPUT -Tyrion and error cannot redefine username
+sayHello(); // OUTPUT -undefined
 ```
 
 Find the output of the code snippets below:
@@ -113,7 +113,7 @@ let sayHello = () => {
   var username = "John";
   console.log(username);
 };
-sayHello(); // OUTPUT - error cannot redefine username
+sayHello(); // OUTPUT - John
 ```
 
 Find the output of the code snippets below:
