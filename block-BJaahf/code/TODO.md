@@ -33,7 +33,12 @@ loop(
 Here's how it works. The function has an "accumulator value" which starts as the `initialValue` and accumulates the output of each loop. The array is iterated over, passing the accumulator and the next array element as arguments to the `callback`. The callback's return value becomes the new accumulator value. The next loop executes with this new accumulator value. In the example above, the accumulator begins at 0. `add(0,4)` is called. The accumulator's value is now 4. Then `add(4, 1)` to make it 5. Finally `add(5, 3)` brings it to 8, which is returned.
 
 ```js
-function reduce(array, callback, initialValue) {}
+function reduce(array, callback, initialValue) {
+  for (let i = 0; i < array.length; i++) {
+    initialValue = callback(initialValue, array[i]);
+  }
+  return initialValue;
+}
 
 // Test
 var nums = [4, 1, 3];
@@ -46,7 +51,22 @@ reduce(nums, add, 0); //-> 8
 3. Construct a function intersection that compares input arrays and returns a new array with elements found in all of the inputs.
 
 ```js
-function intersection(arrays) {}
+function intersection(one, two, three) {
+  function compare(arrayOne, arrayTwo) {
+    let newArr = [];
+    for (let i = 0; i < arrayOne.length; i++) {
+      for (let y = 0; y < arrayTwo.length; y++) {
+        if (arrayOne[i] === arrayTwo[y]) {
+          newArr.push(arrayTwo[y]);
+        }
+      }
+    }
+    return newArr;
+  }
+  let semiCompare = compare(one, two);
+  let finalCompare = compare(semiCompare, three);
+  return finalCompare;
+}
 
 // Test
 console.log(
@@ -57,7 +77,21 @@ console.log(
 4. Construct a function `union` that compares input arrays and returns a new array that contains all elements. If there are duplicate elements, only add it once to the new array. Preserve the order of the elements starting from the first element of the first input array.
 
 ```js
-function union(arrays) {}
+function union(one, two, three) {
+  function pusher(array) {
+    let newArr = [];
+    for (let i = 0; i < array.length; i++) {
+      newArr.push(array[i]);
+    }
+    return newArr;
+  }
+  let finalArr = pusher(one);
+  finalArr.push(pusher(two));
+  finalArr.push(pusher(three));
+  finalArr = finalArr.flat().sort((a, b) => a - b);
+  finalArr = finalArr.filter((element) => element == element);
+  return finalArr;
+}
 
 // Test
 console.log(union([5, 10, 15], [15, 88, 1, 5, 7], [100, 15, 10, 1, 5]));
