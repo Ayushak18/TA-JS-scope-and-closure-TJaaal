@@ -12,7 +12,7 @@
 ```js
 function loop(start, test, update, main) {
   // Your code goes here
-  for (start; test(start); update(start)) {
+  for (start; test(start); start = update(start)) {
     main(start);
   }
 }
@@ -77,20 +77,13 @@ console.log(
 4. Construct a function `union` that compares input arrays and returns a new array that contains all elements. If there are duplicate elements, only add it once to the new array. Preserve the order of the elements starting from the first element of the first input array.
 
 ```js
-function union(one, two, three) {
-  function pusher(array) {
-    let newArr = [];
-    for (let i = 0; i < array.length; i++) {
-      newArr.push(array[i]);
-    }
-    return newArr;
+function union(...arrays) {
+  let first = arrays[0];
+  for (let i = 1; i < arrays.length; i++) {
+    let second = arrays[i];
+    first = first.filter(ele => !second.includes(ele)).concat(second);
   }
-  let finalArr = pusher(one);
-  finalArr.push(pusher(two));
-  finalArr.push(pusher(three));
-  finalArr = finalArr.flat().sort((a, b) => a - b);
-  finalArr = finalArr.filter((element) => element == element);
-  return finalArr;
+  return first;
 }
 
 // Test
