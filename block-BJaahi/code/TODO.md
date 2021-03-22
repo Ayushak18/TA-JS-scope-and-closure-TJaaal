@@ -7,8 +7,8 @@ For Example:
 1.
 
 ```js
-var username = 'Arya';
-let brothers = ['John', 'Ryan', 'Bran'];
+var username = "Arya";
+let brothers = ["John", "Ryan", "Bran"];
 
 console.log(username, brothers[0]);
 
@@ -17,7 +17,7 @@ function sayHello(name) {
 }
 
 let message = sayHello(username);
-var nextMessage = sayHello('Test');
+var nextMessage = sayHello("Test");
 ```
 
 <!-- Answer -->
@@ -36,13 +36,13 @@ var nextMessage = undefined;
 
 // Execution Phase
 
-username = 'Arya';
-brothers = ['John', 'Ryan', 'Bran'];
+username = "Arya";
+brothers = ["John", "Ryan", "Bran"];
 
 console.log(username, brothers[0]);
 
 message = sayHello(username);
-nextMessage = sayHello('Test');
+nextMessage = sayHello("Test");
 ```
 
 2.
@@ -50,7 +50,7 @@ nextMessage = sayHello('Test');
 ```js
 console.log(username, numbers);
 
-var username = 'Arya';
+var username = "Arya";
 let number = 21;
 
 function sayHello(name) {
@@ -58,7 +58,7 @@ function sayHello(name) {
 }
 
 let message = sayHello(username);
-var nextMessage = sayHello('Test');
+var nextMessage = sayHello("Test");
 ```
 
 <!-- Answer -->
@@ -67,29 +67,29 @@ var nextMessage = sayHello('Test');
 // Your code goes here
 
 // Declaration Phase
-var username = undefined
-let number
+var username = undefined;
+let number;
 
 function sayHello(name) {
   return `Hello ${name}`;
 }
 
 let message;
-var nextMessage = undefined
+var nextMessage = undefined;
 
 // Execution Phase
-username = 'Arya'
-number = "21"
+username = "Arya";
+number = "21";
 
 message = sayHello(username);
-nextMessage = sayHello('Test');
+nextMessage = sayHello("Test");
 ```
 
 3.
 
 ```js
 console.log(username, numbers);
-let username = 'Arya';
+let username = "Arya";
 let number = 21;
 
 let sayHello = function (name) {
@@ -97,19 +97,30 @@ let sayHello = function (name) {
 };
 
 let message = sayHello(username);
-var nextMessage = sayHello('Test');
+var nextMessage = sayHello("Test");
 ```
 
 <!-- Answer -->
 
 ```js
 // Your code goes here
+
+// Declaration Phase
+let username;
+let number;
+
+let sayHello;
+let message;
+var nextMessage = undefined;
+
+// Execution Phase
+console.log(username, numbers); // error username is not defined
 ```
 
 4.
 
 ```js
-let username = 'Arya';
+let username = "Arya";
 console.log(username, numbers);
 
 let number = 21;
@@ -119,13 +130,26 @@ let sayHello = function (name) {
   return `Hello ${name}`;
 };
 
-var nextMessage = sayHello('Test');
+var nextMessage = sayHello("Test");
 ```
 
 <!-- Answer -->
 
 ```js
 // Your code goes here
+
+// Declaration Phase
+
+let username;
+let number;
+let message;
+let sayhello;
+var nextMessage = undefined;
+
+// Execution Phase
+
+username = "Arya";
+console.log(username, numbers); // Error numbers is not defined
 ```
 
 5.
@@ -133,7 +157,7 @@ var nextMessage = sayHello('Test');
 ```js
 console.log(name);
 console.log(age);
-var name = 'Lydia';
+var name = "Lydia";
 let age = 21;
 ```
 
@@ -141,6 +165,14 @@ let age = 21;
 
 ```js
 // Your code goes here
+
+// Declaration
+var name = undefined;
+let age;
+
+// Execution
+console.log(name); // undefined
+console.log(age); // error age is not defined
 ```
 
 6.
@@ -149,7 +181,7 @@ let age = 21;
 function sayHi(name) {
   console.log(name);
   console.log(age);
-  var name = 'Lydia';
+  var name = "Lydia";
   let age = 21;
 }
 
@@ -160,6 +192,11 @@ sayHi();
 
 ```js
 // Your code goes here
+
+// Declaration
+function sayHi(name) {}
+
+// Execution
 ```
 
 7.
@@ -169,7 +206,7 @@ sayHi();
 function sayHi(name) {
   console.log(name);
   console.log(age);
-  var name = 'Lydia';
+  var name = "Lydia";
   let age = 21;
 }
 ```
@@ -187,7 +224,7 @@ sayHi();
 let sayHi = function sayHi(name) {
   console.log(name);
   console.log(age);
-  var name = 'Lydia';
+  var name = "Lydia";
   let age = 21;
 };
 ```
@@ -196,6 +233,13 @@ let sayHi = function sayHi(name) {
 
 ```js
 // Your code goes here
+
+// Declaration
+
+let sayHi;
+
+// Execution
+sayHi(); // Error sayHi is not a defined
 ```
 
 9.
@@ -211,6 +255,17 @@ let num2 = 30;
 
 ```js
 // Your code goes here
+
+// Declaration
+let num1;
+var sum = undefined;
+let num2;
+
+// Execution
+
+num1 = 21;
+console.log(sum);
+sum = num1 + num2; // Error num2 is not defined
 ```
 
 10.
@@ -235,6 +290,20 @@ let sum = add(num1, num2, 4, 5, 6);
 
 ```js
 // Your code goes here
+
+// Declaration
+var num1 = undefined;
+let sum2;
+let add;
+function addAgian(a, b) {
+  return a + b;
+}
+let num2;
+let sum;
+
+// Execution
+num1=21;
+sum2 = addAgain(num1, num2, 4, 5, 6); // Error addAgain is not defined
 ```
 
 11.
@@ -256,6 +325,8 @@ let add = (a, b) => {
 
 ```js
 // Your code goes here
+
+// Declaration
 ```
 
 12.
