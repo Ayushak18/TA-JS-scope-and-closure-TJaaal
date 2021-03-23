@@ -4,13 +4,20 @@
 
 ```js
 function objOfMatches(array1, array2, callback) {
-  let obj = {};
-  for (let i = 0; i < array1.length; i++) {
-    if (callback(array1[i]) === array2[i]) {
-      obj[array1[i]] = array2[i];
+  // let obj = {};
+  // for (let i = 0; i < array1.length; i++) {
+  //   if (callback(array1[i]) === array2[i]) {
+  //     obj[array1[i]] = array2[i];
+  //   }
+  // }
+  // return obj;
+
+  return array1.reduce((acc, cv, index) => {
+    if (callback(cv) === array2[index]) {
+      acc[cv] = array2[index];
     }
-  }
-  return obj;
+    return acc;
+  }, {});
 }
 
 // TEST
@@ -67,14 +74,16 @@ The final output from the third array will be matched agains the same indexed el
 
 ```js
 function objOfMatchesWithArray(array1, array2, callback) {
-  let newObj = {};
-  let array3 = array2.map((element) => element.toLowerCase());
-  for (let i = 0; i < array1.length; i++) {
-    if(array3[i].includes(array1[i])){
-      newObj[array1[i]] = array2[i];
+  return array1.reduce((acc, cv, id) => {
+    let compareValue = callback.reduce((accum, currentValue, index) => {
+      accum = currentValue(accum);
+      return accum;
+    }, cv);
+    if (compareValue === array2[id]) {
+      acc[cv] = array2[id];
     }
-  }
-  console.log(newObj);
+    return acc;
+  }, {});
 }
 
 // TEST
@@ -104,7 +113,18 @@ To build the object, `objectWithArrayValues` will pass each value of the first a
 In the final object the key will be the value form the first array like `hi` and value will be an array of values returned from each function like `['HI', 'Hi', 'HiHi']`
 
 ```js
-function objOfMatchesWithArray(array1, array2, callback) {}
+function objOfMatchesWithArray(array1, array2) {
+  return array1.reduce((acc, cv) => {
+    let newArr = [];
+    array2.reduce((accum, currentValue) => {
+      accum = currentValue(cv);
+      newArr.push(accum);
+      return accum;
+    }, cv);
+    acc[cv] = newArr;
+    return acc;
+  }, {});
+}
 
 // TEST
 console.log(
@@ -144,7 +164,15 @@ Create a function named `schedule` which accept two arguments an array of functi
 The function `schedule` will execute the function at first index after the value in value on first index in second array. i.e execute `sayHi` after `1` second and `sayHello` after `2` second.
 
 ```js
-function schedule() {}
+function schedule(functionArray, timingArray) {
+  if (functionArray.length === timingArray.length) {
+    functionArray.forEach((element, index) => {
+      setTimeout(element, timingArray[index]*1000);
+    });
+  } else {
+    alert("Invalid Input");
+  }
+}
 
 function sayHi() {
   console.log("Hi");
